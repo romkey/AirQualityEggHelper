@@ -1,5 +1,4 @@
 // we store options in JSON in a form that's more friendly for us to use than the serialized form
-// we 
 var Options = {
     fields:  {
 	"units": "Show units",
@@ -24,7 +23,7 @@ var Options = {
     checkboxes: [ "units", "feed", "timezone", "relative", "favicon" ],
 
     get: function( callback ) {
-	chrome.storage.sync.get( 'options', function( data ) { if( data == undefined ) { data = Options.defaults; } callback( data.options ) } );
+	chrome.storage.sync.get( 'options', function( data ) { if( data == undefined || data.options == undefined ) { data = { 'options': Options.defaults } } callback( data.options ) } );
      },
 
     set: function( options ) {

@@ -3,7 +3,7 @@
 
   "name": "Air Quality Egg Helper",
   "description": "Adds useful info to Air Quality Egg page on Cosm",
-  "version": "1.0",
+  "version": "1.0.2",
 
   "minimum_chrome_version" : "20.0.0.0",
 

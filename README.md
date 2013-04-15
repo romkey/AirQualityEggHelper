@@ -19,3 +19,4 @@ Currently the extension only supports Google's Chrome browser.
 
 The Chrome extension is available at the Chrome Web Store at https://chrome.google.com/webstore/detail/air-quality-egg-helper/gecpnhhbbfkhjojmijgnpcdmelaokflm
 
+My web page for this project is at http://romkey.com/code/air-quality-egg-helper-browser-extension/

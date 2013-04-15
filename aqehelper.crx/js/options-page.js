@@ -1,6 +1,7 @@
 var OptionsPage = {
     init: function() {
 	$( 'form' ).submit( function( e ) { e.preventDefault(); OptionsPage.save_options(); } );
+	$( '#clear' ).click( function() { OptionsPage.clear(); } );
 	Options.get( function( options ) { OptionsPage.init_form( options ); } );
     },
 
@@ -38,6 +39,12 @@ var OptionsPage = {
 	}
 
 	Options.set( options );
+    },
+
+    // clear storage and reload page
+    clear: function() {
+	chrome.storage.sync.clear();
+	 window.location.reload();
     }
 };
 

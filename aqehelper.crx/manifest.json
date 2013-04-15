@@ -3,24 +3,34 @@
 
   "name": "Air Quality Egg Helper",
   "description": "Adds useful info to Air Quality Egg page on Cosm",
-  "version": "0.1",
+  "version": "1.0",
 
-  "minimum_chrome_version" : "22.0.0.0",
+  "minimum_chrome_version" : "20.0.0.0",
 
   "icons": { "16": "images/icon16.png",
   	     "48": "images/icon48.png",
 	     "128": "images/icon128.png"
 	     },
 
+  "permissions": [
+    "https://api.cosm.com/",
+    "storage"
+  ],
+
+  "options_page": "options.html",
+
   "web_accessible_resources": [
     "js/jquery-1.9.1.min.js",
+    "js/jquery-timeago.js",
+    "js/options.js",
     "js/aqehelper.js",
     "css/aqehelper.css",
-    "images/icon128.png"
+    "images/icon128.png",
+    "images/favicon.ico"
   ],
   "content_scripts" : [ {
     "matches": [ "http://airqualityegg.com/egg/*", "https://airqualityegg.com/egg/*" ],
-    "js" : [ "js/jquery-1.9.1.min.js",  "js/aqehelper.js" ],
+    "js" : [ "js/jquery-1.9.1.min.js", "js/jquery-timeago.js", "js/options.js", "js/aqehelper.js" ],
     "css" : [ "css/aqehelper.css" ]
     } ]
 }

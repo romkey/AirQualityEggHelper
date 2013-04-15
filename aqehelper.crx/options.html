@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Air Quality Egg Helper Options</title>
+        <link rel="stylesheet" type="text/css" href="/css/options.css">
+    </head>
+    <body>
+        <h1>Air Quality Egg Helper Options</h1>
+        <form>
+            <fieldset>
+                <label for='units'>Display units</label>
+                <input type='checkbox' value='units' name='units' /><br/>
+                <label for='temperature'>Temperature units</label>
+                <select name='temperature'>
+		  <option>C</option>
+		  <option>F</option>
+                </select><br/>
+                <label for='feed'>Link to raw feed</label>
+                <input type='checkbox' value='feed' name='feed' /><br/>
+                <label for='timezone'>Show time in localtimezone</label>
+                <input type='checkbox' value='timezone' name='timezone' /><br/>
+                <label for='relative'>Use relative time</label>
+                <input type='checkbox' value='relative' name='relative' /><br/>
+		<label for='favicon'>Favicon</label>
+		<input type='checkbox' value='favicon' name='favicon' /><br/>
+                <label for='refresh'>Automatically refresh page (minutes)</label>
+		<input type='number' value='refresh' name='refresh' />
+		<div class='centered-buttons'>
+		  <input type='submit' value='Save'><input type='reset' />
+		  </div>
+            </fieldset>
+        </form>
+        <p><a href='http://airqualityegg.com/'>Air Quality Egg website</a></p>
+        <p><a href='http://romkey.com/air-quality-egg-helper-browser-extension/'>Air Quality Egg Helper web page</a></p>
+        <p><a href='https://github.com/romkey/AirQualityEggHelper'>Air Quality Egg Helper source on Github</a></p>
+        <p>Extension developed by <a href='http://romkey.com/'>John Romkey</a>. Not endorsed by <a href='http://cosm.com'>Cosm</a> or <a href=''http://sensemake.rs/portfolio-item/air-quality-egg/'>Sensemakers</a>.
+        <script src="js/jquery-1.9.1.min.js"></script>
+        <script src="js/jquery.deserialize.min.js"></script>
+        <script src="js/options.js"></script>
+        <script src="js/options-page.js"></script>
+    </body> 
+</html>

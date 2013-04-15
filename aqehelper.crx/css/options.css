@@ -1,0 +1,16 @@
+fieldset {
+    width: auto;
+    display: inline-block;
+}
+label {
+    width: 50%;
+    float: left;
+    text-align: right;
+}
+centered-buttons {
+    float: clear;
+    text-align: center;
+}
+form li {
+    list: none;
+}

@@ -3,7 +3,7 @@ fieldset {
     display: inline-block;
 }
 label {
-    width: 50%;
+    width: 60%;
     float: left;
     text-align: right;
 }
@@ -11,6 +11,6 @@ centered-buttons {
     float: clear;
     text-align: center;
 }
-form li {
-    list: none;
+body {
+    font-family: sans-serif;
 }

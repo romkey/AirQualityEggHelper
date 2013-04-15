@@ -7,7 +7,7 @@ var Options = {
 	"feed": "Show raw feed link",
 	"timezone": "Show time in local timezone",
 	"relative": "Display relative time (minutes ago)",
-	"refresh": "Automatically refresh the page",
+	"refresh": "Automatically refresh the page (minutes)",
 	"favicon": "Show favicon"
     },
 
@@ -17,7 +17,7 @@ var Options = {
 	"feed": true,
 	"timezone": true,
 	"relative": true,
-	"refresh": 300,
+	"refresh": 5,
 	"favicon": true
     },
 

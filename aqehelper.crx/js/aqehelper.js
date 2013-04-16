@@ -1,4 +1,6 @@
 var AQEHelper = {
+    extra_sensors: 0,
+
     init: function( options ) {
 	var temp_units = 'C';
 
@@ -70,7 +72,12 @@ var AQEHelper = {
     add_sensor: function( symbol, name, position, value ) {
 	var div = '';
 
-	div  = '<div style="clear: both">';
+
+	// if the current number of sensors is even, insert a clear so that divs line up
+	if( AQEHelper.extra_sensors++ % 2 == 0 ) {
+	    div  = '<div style="clear: both; height: 4em;">';
+	}
+
 	div += '</div><div class="current current-' + position + ' current-' + symbol.toLowerCase() + '">\n';
 	div += '  <h2 class="current-id">' + symbol + '</h2>\n';
 	div += '  <h3 class="current-id-full">' + name + '</h3>\n';

@@ -59,6 +59,41 @@ var AQEHelper = {
 	if( options.favicon ) {
 	    $( 'link[rel="shortcut icon"]' ).attr( 'href', chrome.extension.getURL( '/images/favicon.ico' ) );
 	}
+
+	$.get( 'https://api.cosm.com/v2/feeds/' + id + '.json', function( data ) { AQEHelper.process_raw_feed( data ); } );
+
+	AQEHelper.add_sensor( 'O3', 'Ozone', 'left', '33.3' );
+    },
+
+    
+
+    add_sensor: function( symbol, name, position, value ) {
+	var div = '';
+
+	div  = '<div style="clear: both">';
+	div += '</div><div class="current current-' + position + ' current-' + symbol.toLowerCase() + '">\n';
+	div += '  <h2 class="current-id">' + symbol + '</h2>\n';
+	div += '  <h3 class="current-id-full">' + name + '</h3>\n';
+	div += '  <div class="current-value">'
+	div += '    <p class="current-value-measure">';
+	div += '      <span class="current-value-measure-wrap">' + value + '</span>';
+	div += '    </p>';
+	div += '    <span class="current-gauge"></span>';
+	div += '    <span class="current-gauge-filling current-gauge-green"></span>';
+	div += '  </div>';
+
+	$( '.dashboard-current-values' ).append( div );
+    },
+
+    process_raw_feed: function( data ) {
+	console.log( 'got raw feed!' );
+	console.log( data );
+
+	var sensors = data.datastreams;
+	for( i in sensors ) {
+	    console.log( 'sensor ' + i );
+	    console.log( sensors[ i ] );
+	}
     }
 };
 

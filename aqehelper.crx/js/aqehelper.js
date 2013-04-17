@@ -62,6 +62,11 @@ var AQEHelper = {
 	    $( 'link[rel="shortcut icon"]' ).attr( 'href', chrome.extension.getURL( '/images/favicon.ico' ) );
 	}
 
+	// title
+	if( options.title ) {
+	    $( 'title' ).prepend( $( '.metadata-feed-title' ).text() + ' &#187; ' );
+	}
+
 	$.get( 'https://api.cosm.com/v2/feeds/' + id + '.json', function( data ) { AQEHelper.process_raw_feed( data ); } );
 
 	AQEHelper.add_sensor( 'O3', 'Ozone', 'left', '33.3' );

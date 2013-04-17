@@ -7,7 +7,8 @@ var Options = {
 	"timezone": "Show time in local timezone",
 	"relative": "Display relative time (minutes ago)",
 	"refresh": "Automatically refresh the page (minutes)",
-	"favicon": "Show favicon"
+	"favicon": "Show favicon",
+	"title": "Rewrite title"
     },
 
     defaults: {
@@ -17,10 +18,11 @@ var Options = {
 	"timezone": true,
 	"relative": true,
 	"refresh": 5,
-	"favicon": true
+	"favicon": true,
+	"title": true
     },
 
-    checkboxes: [ "units", "feed", "timezone", "relative", "favicon" ],
+    checkboxes: [ "units", "feed", "timezone", "relative", "favicon", "title" ],
 
     get: function( callback ) {
 	chrome.storage.sync.get( 'options', function( data ) { if( data == undefined || data.options == undefined ) { data = { 'options': Options.defaults } } callback( data.options ) } );

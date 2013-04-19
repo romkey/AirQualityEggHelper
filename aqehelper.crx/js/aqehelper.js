@@ -65,7 +65,7 @@ var AQEHelper = {
 	// if we are, we use the background page to do it since Chrome doesn't honor the notifications
 	// permission for content-scripts
 	if( options.warnstale ) {
-	    chrome.runtime.sendMessage( { subject: "test", message: "test notification" } );
+//	    chrome.runtime.sendMessage( { subject: "test", message: "test notification" } );
 	}
 
 	// if we're supposed to show all sensors then fetch the raw feed in JSON and extract the info

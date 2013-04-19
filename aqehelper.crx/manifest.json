@@ -38,6 +38,7 @@
   "content_scripts" : [ {
     "matches": [ "http://airqualityegg.com/egg/*", "https://airqualityegg.com/egg/*" ],
     "js" : [ "js/jquery-1.9.1.min.js", "js/jquery-timeago.js", "js/options.js", "js/aqehelper.js" ],
-    "css" : [ "css/aqehelper.css" ]
+    "css" : [ "css/aqehelper.css" ],
+    "run_at": "document_end"
     } ]
 }

@@ -8,7 +8,9 @@ var Options = {
 	"relative": "Display relative time (minutes ago)",
 	"refresh": "Automatically refresh the page (minutes)",
 	"favicon": "Show favicon",
-	"title": "Rewrite title"
+	"title": "Rewrite title",
+	"warnstale": "Warn on old update",
+	"all_sensors": "Show all sensors"
     },
 
     defaults: {
@@ -19,10 +21,12 @@ var Options = {
 	"relative": true,
 	"refresh": 5,
 	"favicon": true,
-	"title": true
+	"title": true,
+	"warnstale": 10,
+	"all_sensors": true
     },
 
-    checkboxes: [ "units", "feed", "timezone", "relative", "favicon", "title" ],
+    checkboxes: [ "units", "feed", "timezone", "relative", "favicon", "title", "all_sensors" ],
 
     get: function( callback ) {
 	chrome.storage.sync.get( 'options', function( data ) { if( data == undefined || data.options == undefined ) { data = { 'options': Options.defaults } } callback( data.options ) } );

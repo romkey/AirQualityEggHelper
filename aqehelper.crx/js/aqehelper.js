@@ -17,13 +17,7 @@ var AQEHelper = {
 	}
 
 
-	// add units
-	if( options.units ) {
-	    $( '.current-no2 .current-value-measure-wrap' ).append( ' ppb' );
-	    $( '.current-co .current-value-measure-wrap' ).append( ' ppb' );
-	    $( '.current-humidity .current-value-measure-wrap' ).append( ' %' );
-	    $( '.current-temperature .current-value-measure-wrap' ).append( ' &#176;' + temp_units );
-	}
+
 
 	// rewrite the timestamp
 	// if we're doing relative time, force local timezone use
@@ -67,14 +61,37 @@ var AQEHelper = {
 	    $( 'title' ).prepend( $( '.metadata-feed-title' ).text() + ' &#187; ' );
 	}
 
-	$.get( 'https://api.cosm.com/v2/feeds/' + id + '.json', function( data ) { AQEHelper.process_raw_feed( data ); } );
+	// are we going to warn the user about stale updates?
+	// if we are, we use the background page to do it since Chrome doesn't honor the notifications
+	// permission for content-scripts
+	if( options.warnstale ) {
+	    chrome.runtime.sendMessage( { subject: "test", message: "test notification" } );
+	}
 
-	AQEHelper.add_sensor( 'O3', 'Ozone', 'left', '33.3' );
+	// if we're supposed to show all sensors then fetch the raw feed in JSON and extract the info
+	if( options.all_sensors ) {
+	    $.get( 'https://api.cosm.com/v2/feeds/' + id + '.json', function( data ) { AQEHelper.process_raw_feed( data, options ); } );
+	}
+
+	// add units
+	if( options.units ) {
+	    $( '.current-no2 .current-value-measure-wrap' ).append( ' ppb' );
+	    $( '.current-co .current-value-measure-wrap' ).append( ' ppb' );
+	    $( '.current-humidity .current-value-measure-wrap' ).append( ' %' );
+	    $( '.current-temperature .current-value-measure-wrap' ).append( ' &#176;' + temp_units );
+	}
     },
 
     
 
-    add_sensor: function( symbol, name, position, value ) {
+    add_sensor: function( symbol, position, value ) {
+	// otherwise add the sensor
+	var sensor_names = {
+	    'o3': 'Ozone',
+	    'voc': 'Volatile Organics',
+	    'dust': 'Dust'
+	};
+
 	var div = '';
 
 
@@ -85,7 +102,7 @@ var AQEHelper = {
 
 	div += '</div><div class="current current-' + position + ' current-' + symbol.toLowerCase() + '">\n';
 	div += '  <h2 class="current-id">' + symbol + '</h2>\n';
-	div += '  <h3 class="current-id-full">' + name + '</h3>\n';
+	div += '  <h3 class="current-id-full">' + sensor_names[ symbol.toLowerCase() ] + '</h3>\n';
 	div += '  <div class="current-value">'
 	div += '    <p class="current-value-measure">';
 	div += '      <span class="current-value-measure-wrap">' + value + '</span>';
@@ -97,14 +114,37 @@ var AQEHelper = {
 	$( '.dashboard-current-values' ).append( div );
     },
 
-    process_raw_feed: function( data ) {
-	console.log( 'got raw feed!' );
-	console.log( data );
-
+    process_raw_feed: function( data, options ) {
 	var sensors = data.datastreams;
-	for( i in sensors ) {
-	    console.log( 'sensor ' + i );
-	    console.log( sensors[ i ] );
+	for( var i in sensors ) {
+	    var s = sensors[ i ];
+	    s.taghash = {};
+	    for( var j in s.tags ) {
+		var tag = s.tags[ j ];
+
+		var elts = tag.split( '=' );
+		s.taghash[ elts[ 0 ] ] = elts[ 1 ];
+	    }
+	
+
+	    // skip raw feeds
+	    if( s.taghash[ 'aqe:data_origin' ] == 'raw' ) {
+		continue;
+	    }
+
+	    // skip if this already exists
+	    var symbol = s.taghash[ 'aqe:sensor_type' ];
+	    if( $( '.current-' + symbol.toLowerCase() ).length != 0 ) {
+		continue;
+	    }
+
+	AQEHelper.add_sensor( symbol, 'left', s.current_value );
+	}
+
+	if( options.units ) {
+	    $( '.current-dust .current-value-measure-wrap' ).append( ' pcs/283ml' );
+	    $( '.current-o3 .current-value-measure-wrap' ).append( ' ppb' );
+	    $( '.current-voc .current-value-measure-wrap' ).append( ' ppm' );
 	}
     }
 };

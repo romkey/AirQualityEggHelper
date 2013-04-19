@@ -13,9 +13,15 @@
 	     },
 
   "permissions": [
-    "https://api.cosm.com/",
-    "storage"
-  ],
+      "https://api.cosm.com/",
+      "notifications",
+      "storage"
+      ],
+
+  "background": {
+      "scripts": [ "js/background.js" ],
+      "persistent": false
+  },
 
   "options_page": "options.html",
 
@@ -25,6 +31,7 @@
     "js/options.js",
     "js/aqehelper.js",
     "css/aqehelper.css",
+    "images/icon48.png",
     "images/icon128.png",
     "images/favicon.ico"
   ],

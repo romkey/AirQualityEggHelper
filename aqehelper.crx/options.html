@@ -13,31 +13,35 @@
                 <select name='temperature'>
 		  <option>C</option>
 		  <option>F</option>
-                </select><br/>
+                </select><br/><br />
                 <label for='feed'>Link to raw feed</label>
-                <input type='checkbox' value='feed' name='feed' /><br/>
+                <input type='checkbox' value='feed' name='feed' /><br/><br />
                 <label for='timezone'>Show time in localtimezone</label>
                 <input type='checkbox' value='timezone' name='timezone' /><br/>
                 <label for='relative'>Use relative time</label>
-                <input type='checkbox' value='relative' name='relative' /><br/>
+                <input type='checkbox' value='relative' name='relative' /><br/><br />
 		<label for='favicon'>Favicon</label>
 		<input type='checkbox' value='favicon' name='favicon' /><br/>
 		<label for='title'>Rewrite title</label>
-		<input type='checkbox' value='title' name='title' /><br />
-                <label for='refresh'>Automatically refresh page (minutes)</label>
-		<input type='number' value='refresh' name='refresh' />
+		<input type='checkbox' value='title' name='title' /><br /><br />
+                <label for='refresh'>Automatically refresh page</label>
+		<input type='number' value='refresh' name='refresh' placeholder='min' /><br />
+		<label for='refresh'>Warn if update too old</label>
+		<input type='number' value='warnstale' name='warnstale' placeholder='min' /><br /><br />
+		<label for='all_sensors'>Show all sensors</label>
+		<input type='checkbox' value='all_sensors' name='all_sensors' />
 		<div class='centered-buttons'>
 		  <input type='submit' value='Save'><input type='reset' />
 		  </div>
             </fieldset>
         </form>
         <button id='clear'>Clear Stored Settings</button>
+        <p><strong>Enabling "Show all sensors" will require you to login using a free <a href='http://cosm.com'>Cosm</a> account.</strong></p>
         <p><a href='http://airqualityegg.com/'>Air Quality Egg website</a></p>
         <p><a href='http://romkey.com/air-quality-egg-helper-browser-extension/'>Air Quality Egg Helper web page</a></p>
         <p><a href='https://github.com/romkey/AirQualityEggHelper'>Air Quality Egg Helper source on Github</a></p>
         <p>Extension developed by <a href='http://romkey.com/'>John Romkey</a>. Not endorsed by <a href='http://cosm.com'>Cosm</a> or <a href=''http://sensemake.rs/portfolio-item/air-quality-egg/'>Sensemakers</a>.
         <script src="js/jquery-1.9.1.min.js"></script>
-        <script src="js/jquery.deserialize.min.js"></script>
         <script src="js/options.js"></script>
         <script src="js/options-page.js"></script>
     </body> 

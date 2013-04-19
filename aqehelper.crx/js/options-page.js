@@ -14,6 +14,8 @@ var OptionsPage = {
 	// now restore the options
 	$( 'select' ).val( options.temperature );
 	$( 'input[name="refresh"]' ).val( options.refresh );
+	$( 'input[name="warnstale"]' ).val( options.warnstale );
+
 	for( var i in Options.checkboxes ) {
 	    var name = Options.checkboxes[ i ];
 	    if( options[ name ] ) {
@@ -26,6 +28,7 @@ var OptionsPage = {
 	var options = {};
 
 	options.refresh = $( 'input[name="refresh"]' ).val();
+	options.warnstale = $( 'input[name="warnstale"]' ).val();
 	options.temperature = $( 'select' ).val();
 
 	for( i in Options.checkboxes ) {
@@ -39,6 +42,15 @@ var OptionsPage = {
 	}
 
 	Options.set( options );
+
+	if( options.warnstale && webkitNotifications.checkPermission() != 0 ) {
+	    console.log( 'about to ask for notification permission' );
+	    webkitNotifications.requestPermission();
+	} else {
+	    console.log( 'warnstale is ' + options.warnstale );
+	    console.log( 'checkPermission is ' + webkitNotifications.checkPermission() );
+	    console.log( '...or not' );
+	}
     },
 
     // clear storage and reload page

@@ -23,13 +23,20 @@ var Options = {
 	"favicon": true,
 	"title": true,
 	"warnstale": 10,
-	"all_sensors": true
+	"all_sensors": false
     },
 
     checkboxes: [ "units", "feed", "timezone", "relative", "favicon", "title", "all_sensors" ],
 
     get: function( callback ) {
-	chrome.storage.sync.get( 'options', function( data ) { if( data == undefined || data.options == undefined ) { data = { 'options': Options.defaults } } callback( data.options ) } );
+	chrome.storage.sync.get( 'options', function( data ) {
+	    if( data.options == undefined ) {
+		data.options = {};
+	    }
+
+	    $.extend( data.options, Options.defaults );
+	    callback( data.options );
+	} );
      },
 
     set: function( options ) {

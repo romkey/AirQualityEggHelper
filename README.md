@@ -1,4 +1,4 @@
-Air Quality Egg Helper
+Air Quality Egg Helper v2
 ============
 
 Browser extension which adds useful markup to Air Quality Egg pages hosted by Cosm.
@@ -12,8 +12,12 @@ This extension offers several minor tweaks to the standard Air Quality Egg page 
 * show a link to the raw feed for this egg
 * add a favicon to the page (currently the favicon link is 404)
 * automatically refresh the page
+* put the egg's name in the page title
+* display additional sensors
 
 These tweaks can all be controlled via an options page.
+
+IMPORTANT: Displaying additional sensors will require you to sign up for and login with a free Cosm.com account. The extension uses the JSON feed for the Air Quality Egg and access to the feed requires you to be logged in on Cosm.
 
 Currently the extension only supports Google's Chrome browser.
 

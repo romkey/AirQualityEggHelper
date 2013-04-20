@@ -80,8 +80,20 @@ var AQEHelper = {
 	    $( '.current-humidity .current-value-measure-wrap' ).append( ' %' );
 	    $( '.current-temperature .current-value-measure-wrap' ).append( ' &#176;' + temp_units );
 	}
+
+	// add our note about setup if it hasn't already been seen
+	chrome.storage.sync.get( 'setup-note', function( data ) { AQEHelper.setup_note( data ); } );
     },
 
+    setup_note: function( data ) {
+	if( data[ 'setup-note' ] != undefined ) {
+	    return;
+	}
+
+	$( 'body' ).append( '<div style="background-color: yellow; z-index: 5000; border-radius: 5px; padding: 1em; border: .5em solid black; position: fixed; top: 30%; left: 30%;"><h1>Air Quality Egg Helper Extension</h1>To enable the display of additional sensors:<ol><li>Register for a free <a href="http://cosm.com" target="_blank">Cosm.com</a> account</li><li>Enable "Show all sensors" on the <a href="' + chrome.extension.getURL( 'options.html' ) + '" target="_blank">options page</a></li></ol><button onclick="$( this ).parent().hide();">Hide</button></div>' );
+
+	chrome.storage.sync.set( { 'setup-note': true } );
+    },
     
 
     add_sensor: function( symbol, position, value ) {

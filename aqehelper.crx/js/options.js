@@ -34,8 +34,10 @@ var Options = {
 		data.options = {};
 	    }
 
-	    $.extend( data.options, Options.defaults );
-	    callback( data.options );
+	    var options = {};
+	    $.extend( options, Options.defaults, data.options );
+
+	    callback( options );
 	} );
      },
 

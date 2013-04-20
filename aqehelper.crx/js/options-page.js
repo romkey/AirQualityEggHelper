@@ -42,15 +42,6 @@ var OptionsPage = {
 	}
 
 	Options.set( options );
-
-	if( options.warnstale && webkitNotifications.checkPermission() != 0 ) {
-	    console.log( 'about to ask for notification permission' );
-	    webkitNotifications.requestPermission();
-	} else {
-	    console.log( 'warnstale is ' + options.warnstale );
-	    console.log( 'checkPermission is ' + webkitNotifications.checkPermission() );
-	    console.log( '...or not' );
-	}
     },
 
     // clear storage and reload page

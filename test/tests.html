@@ -2,13 +2,71 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>QUnit Example</title>
-  <link rel="stylesheet" href="/resources/qunit.css">
+  <title>Air Quality Egg Helper Unit Tests</title>
+  <link rel="stylesheet" href="../ext/qunit-1.11.0.css">
 </head>
 <body>
+  <h1>Air Quality Egg Helper Unit Tests</h1>
   <div id="qunit"></div>
   <div id="qunit-fixture"></div>
-  <script src="/resources/qunit.js"></script>
-  <script src="/resources/tests.js"></script>
+  <!-- #dom-markup is a hidden div which we use to test markup -->
+  <div id="dom-markup" style="display: none;">
+    <div class="dashboard-current-values clearfix">
+    <div class="current current-left current-no2">
+      <h2 class="current-id">NO2</h2>
+      <h3 class="current-id-full">Nitrogen Dioxide</h3>
+      <div class="current-value">
+        <p class="current-value-measure">
+          <span class="current-value-measure-wrap">988928</span>
+        </p>
+        <span class="current-gauge"></span>
+        <span class="current-gauge-filling current-gauge-green"></span>
+      </div>
+    </div>
+
+    <div class="current current-left current-co">
+      <h2 class="current-id">CO</h2>
+      <h3 class="current-id-full">Carbon Monoxide</h3>
+      <div class="current-value">
+        <p class="current-value-measure">
+          <span class="current-value-measure-wrap">8988</span>
+        </p>
+        <span class="current-gauge"></span>
+        <span class="current-gauge-filling current-gauge-green"></span>
+      </div>
+    </div>
+
+    <div class="current current-right current-temperature">
+      <h2 class="current-id heading-narrow">Temperature</h2>
+      <div class="current-value">
+        <p class="current-value-measure">
+          <span class="current-value-measure-wrap">21</span>
+        </p>
+        <span class="current-gauge"></span>
+        <span class="current-gauge-filling"></span>
+      </div>
+    </div>
+    
+    <div class="current current-right current-humidity">
+      <h2 class="current-id heading-narrow">Humidity</h2>
+      <div class="current-value">
+        <p class="current-value-measure">
+          <span class="current-value-measure-wrap">17</span>
+        </p>
+        <span class="current-gauge"></span>
+        <span class="current-gauge-filling"></span>
+      </div>
+    </div>
+  </div>
+
+  <p class="dashboard-updated">Last updated 22 Apr 2013 20:33:35</p>
+  </div>
+  <script src="../ext/qunit-1.11.0.js"></script>
+  <script src="../ext/jquery-1.9.1.min.js"></script>
+  <script src="dummy.js"></script>
+  <script src="../lib/js/options.js"></script>
+  <script src="../lib/js/aqehelper.js"></script>
+  <script src="temp.js"></script>
+  <script src="tests.js"></script>
 </body>
 </html>

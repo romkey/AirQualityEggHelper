@@ -1,6 +1,5 @@
 /*jshint node:true */
 module.exports = function( grunt ) {
-
     grunt.loadNpmTasks( "grunt-git-authors" );
     grunt.loadNpmTasks( "grunt-contrib-jshint" );
     grunt.loadNpmTasks( "grunt-contrib-csslint" );
@@ -11,14 +10,14 @@ module.exports = function( grunt ) {
 
     grunt.initConfig( {
 	jshint: {
-	    all: [ 'Gruntfile.js', 'js/*.js', 'aqehelper.crx/js/options-page.js' ],
+	    all: [ 'Gruntfile.js', 'lib/js/*.js', 'lib/aqehelper.crx/js/options-page.js' ],
 	    options: {
 		jquery: true,
 		smarttabs: true
 	    }
 	},
 	csslint: {
-	    files: [ 'css/options.css' ]
+	    files: [ 'lib/css/options.css' ]
 	},
 	qunit: {
 	    files: ['test/**/*.html']
@@ -26,16 +25,16 @@ module.exports = function( grunt ) {
 	compress: {
 	    main: {
 		files: [
-		    { src: 'aqehelper.crx/**', dest: 'dist/aqehelper.crx.zip' }
+		    { src: 'lib/aqehelper.crx/**', dest: 'dist/aqehelper.crx.zip', mode: 'zip' }
 		]
 	    }
 	}
     } );
 
-    var js_files = [ 'js/aqehelper.js', 'js/options.js' ];
-    var js_dirs = [ 'aqehelper.xpi/data/js' ];
-    var css_files = [ 'css/options.css' ];
-    var css_dirs = [ 'aqehelper.xpi/data/css' ];
+    var js_files = [ 'lib/js/aqehelper.js', 'lib/js/options.js' ];
+    var js_dirs = [ 'lib/aqehelper.xpi/data/js' ];
+    var css_files = [ 'lib/css/options.css' ];
+    var css_dirs = [ 'lib/aqehelper.xpi/data/css' ];
 
     grunt.registerTask( 'build', function() {
 	for( var d in js_dirs ) {

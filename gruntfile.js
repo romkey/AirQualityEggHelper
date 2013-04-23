@@ -23,9 +23,12 @@ module.exports = function( grunt ) {
 	    files: ['test/**/*.html']
 	},
 	compress: {
-	    main: {
+	    zip: {
+		options: {
+		    archive: './dist/aqehelper.crx.zip'
+		},
 		files: [
-		    { src: 'lib/aqehelper.crx/**', dest: 'dist/aqehelper.crx.zip', mode: 'zip' }
+		    { expand: true, cwd: './lib', src: [ 'aqehelper.crx/**/*' ] }
 		]
 	    }
 	}
@@ -37,14 +40,17 @@ module.exports = function( grunt ) {
     var css_dirs = [ 'lib/aqehelper.xpi/data/css' ];
 
     grunt.registerTask( 'build', function() {
-	for( var d in js_dirs ) {
-	    for( var f in js_files ) {
+	var d;
+	var f;
+
+	for( d in js_dirs ) {
+	    for( f in js_files ) {
 		grunt.file.copy( js_files[ f ], js_dirs[ d ] );
 	    }
 	}
 
-	for( var d in css_dirs ) {
-	    for( var f in css_files ) {
+	for( d in css_dirs ) {
+	    for( f in css_files ) {
 		grunt.file.copy( css_files[ f ], css_dirs[ d ] );
 	    }
 	}

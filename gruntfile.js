@@ -11,7 +11,7 @@ module.exports = function( grunt ) {
 
     grunt.initConfig( {
 	jshint: {
-	    all: [ 'Gruntfile.js', 'lib/js/*.js', 'lib/aqehelper.crx/js/options-page.js' ],
+	    all: [ 'Gruntfile.js', 'lib/js/*.js', 'test/*.js' ],
 	    options: {
 		jquery: true,
 		smarttabs: true

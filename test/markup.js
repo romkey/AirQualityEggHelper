@@ -5,7 +5,6 @@ test( "raw feed", function() {
     var text = $( '.dashboard-updated' ).text();
 
     equal( text, 'raw feed' );
-    }
 } );
 
 test( "temperature markup", function() {

@@ -6,7 +6,7 @@
 chrome.storage = {};
 chrome.storage.sync = {
     get: function() {
-	return { options: Options.default };
+	return { options: Options[ 'default' ] };
     },
 
     set: function() {

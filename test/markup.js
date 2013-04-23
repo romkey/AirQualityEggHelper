@@ -4,7 +4,7 @@ module( "markup" );
 test( "raw feed", function() {
     var text = $( '.dashboard-updated' ).text();
 
-    equal( text, 'raw feed' );
+    equal( text.substring( text.length - 8 ), 'raw feed' );
 } );
 
 test( "temperature markup", function() {

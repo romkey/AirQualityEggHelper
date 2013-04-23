@@ -30,4 +30,26 @@ function markup_tests() {
 
 	equal( $( '.current-temperature .current-value-measure-wrap' ).html(), "69.8 °F", "converted temperature markup" );
     } );
+
+    test( "units markup", function() {
+	function end_of_string( str, chars ) {
+	    return str.substring( str.length - chars );
+	}
+
+	expect( 7 );
+
+	// first we test our end of string function
+	equal( end_of_string( "abcdef", 1 ), "f" );
+	equal( end_of_string( "abcdef", 2 ), "ef" );
+	equal( end_of_string( "abcdef", 6 ), "abcdef" );
+
+	// then we test the markup
+	equal( end_of_string( $( '.current-temperature .current-value-measure-wrap' ).html(), 2 ), "°F", "temperature units" );
+	equal( end_of_string( $( '.current-no2 .current-value-measure-wrap' ).html(), 3 ), "ppb", "no2 units" );
+	equal( end_of_string( $( '.current-co .current-value-measure-wrap' ).html(), 3 ), "ppb", " co units" );
+	equal( end_of_string( $( '.current-humidity .current-value-measure-wrap' ).html(), 1 ), "%", "humidity units" );
+    } );
 }
+
+
+

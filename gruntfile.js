@@ -7,6 +7,7 @@ module.exports = function( grunt ) {
     grunt.loadNpmTasks( "grunt-contrib-watch" );
     grunt.loadNpmTasks( "grunt-contrib-uglify" );
     grunt.loadNpmTasks( "grunt-contrib-compress" );
+    grunt.loadNpmTasks( "grunt-contrib-copy" );
 
     grunt.initConfig( {
 	jshint: {
@@ -29,6 +30,26 @@ module.exports = function( grunt ) {
 		},
 		files: [
 		    { expand: true, cwd: './lib', src: [ 'aqehelper.crx/**/*' ] }
+		]
+	    }
+	},
+	copy: {
+	    main: {
+		files: [
+		    { expand: true, cwd: './lib/js', src: [ '*' ], dest:  'lib/aqehelper.crx/js/' },
+		    { expand: true, cwd: './lib/js', src: [ '*' ], dest:  'lib/aqehelper.xpi/data/js/' },
+
+		    { expand: true, cwd: './ext', src: [ '*.js' ], dest:  'lib/aqehelper.crx/js/' },
+		    { expand: true, cwd: './ext', src: [ '*.js' ], dest:  'lib/aqehelper.xpi/data/js/' },
+
+		    { expand: true, cwd: './lib/css', src: [ '*' ], dest: 'lib/aqehelper.crx/css/'  },
+		    { expand: true, cwd: './lib/css', src: [ '*' ], dest: 'lib/aqehelper.xpi/data/css/' },
+
+		    { expand: true, cwd: './ext', src: [ '*.css' ], dest:  'lib/aqehelper.crx/css/' },
+		    { expand: true, cwd: './ext', src: [ '*.css' ], dest:  'lib/aqehelper.xpi/data/css/' },
+
+		    { expand: true, cwd: './lib/img', src: [ '*' ], dest: 'lib/aqehelper.crx/images/' },
+		    { expand: true, cwd: './lib/img', src: [ '*' ], dest: 'lib/aqehelper.xpi/data/img/' }
 		]
 	    }
 	}

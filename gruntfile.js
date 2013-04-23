@@ -52,7 +52,9 @@ module.exports = function( grunt ) {
 		    { expand: true, cwd: './lib/img', src: [ '*' ], dest: 'lib/aqehelper.xpi/data/img/' }
 		]
 	    }
-	}
+	},
+	clean: [ 'lib/aqehelper.crx/js', 'lib/aqehelper.crx/css', 'lib/aqehelper.crx/images',
+		 'lib/aqehelper.xpi/data/js', 'lib/aqehelper.xpi/data/css', 'lib/aqehelper.xpi/data/img' ]
     } );
 
     var js_files = [ 'lib/js/aqehelper.js', 'lib/js/options.js' ];

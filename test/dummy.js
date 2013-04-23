@@ -5,10 +5,12 @@
  */
 chrome.storage = {};
 chrome.storage.sync = {
-    get: function() {
-	return { options: Options[ 'default' ] };
+    get: function( key, callback ) {
+	callback( { options: Options[ 'default' ] } );
     },
 
     set: function() {
     }
 };
+chrome.extension = {};
+chrome.extension.getURL = function( url ) { return url; }

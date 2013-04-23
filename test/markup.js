@@ -1,17 +1,33 @@
 /* markup-related tests
  */
 module( "markup" );
-test( "raw feed", function() {
-    var text = $( '.dashboard-updated' ).text();
 
-    equal( text.substring( text.length - 8 ), 'raw feed' );
-} );
+$( document ).ready( function() { markup_tests(); } );
 
-test( "temperature markup", function() {
-    // use .html() rather than text so that we see any accidental HTML
-    equal( $( '.current-temperature .current-value-measure-wrap' ).html(), "21", "initial temperature markup" );
+function markup_tests() {
+    test( "raw feed", function() {
+	expect( 1 );
 
-    AQEHelper._markup_temperature();
+	var text = $( '.dashboard-updated' ).text();
 
-    equal( $( '.current-temperature .current-value-measure-wrap' ).html(), "69.8", "converted temperature markup" );
-} );
+	equal( text.substring( text.length - 8 ), 'raw feed' );
+    } );
+
+    test( "favicon", function() {
+	expect( 2 );
+
+	equal( $( 'link[rel="shortcut icon"]' ).length, 1 );
+	equal( $( 'link[rel="shortcut icon"]' ).attr( 'href' ), '/images/favicon.ico' );
+    } );
+
+    test( "temperature markup", function() {
+	expect( 1 );
+
+	// use .html() rather than text so that we see any accidental HTML
+//	equal( $( '.current-temperature .current-value-measure-wrap' ).html(), "21", "initial temperature markup" );
+
+//	AQEHelper._markup_temperature();
+
+	equal( $( '.current-temperature .current-value-measure-wrap' ).html(), "69.8 °F", "converted temperature markup" );
+    } );
+}

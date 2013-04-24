@@ -1,8 +1,9 @@
 {
-  "name": "aqehelper.xpi",
-  "fullName": "aqehelper.xpi",
-  "description": "a basic add-on",
-  "author": "",
-  "license": "MPL 2.0",
-  "version": "0.1"
+    "name": "air-quality-egg-helper",
+    "license": "MIT License", 
+    "author": "John Romkey", 
+    "version": "2.0.1", 
+    "fullName": "Air Quality Egg Helper", 
+    "id": "jid1-hxwZfqVOFcJ06Q", 
+    "description": "Adds useful functionality to Air Quality Egg web pages"
 }

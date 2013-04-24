@@ -13,4 +13,5 @@ chrome.storage.sync = {
     }
 };
 chrome.extension = {};
-chrome.extension.getURL = function( url ) { return url; }
+chrome.extension.getURL = function( url ) { return url; };
+

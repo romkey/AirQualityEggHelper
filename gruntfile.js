@@ -8,6 +8,8 @@ module.exports = function( grunt ) {
     grunt.loadNpmTasks( "grunt-contrib-uglify" );
     grunt.loadNpmTasks( "grunt-contrib-compress" );
     grunt.loadNpmTasks( "grunt-contrib-copy" );
+    grunt.loadNpmTasks( "grunt-contrib-clean" );
+    grunt.loadNpmTasks('grunt-shell');
 
     grunt.initConfig( {
 	jshint: {
@@ -37,24 +39,35 @@ module.exports = function( grunt ) {
 	    main: {
 		files: [
 		    { expand: true, cwd: './lib/js', src: [ '*' ], dest:  'lib/aqehelper.crx/js/' },
+		    { expand: true, cwd: './lib/js', src: [ '*' ], dest:  'lib/aqehelper.safariextension/js/' },
 		    { expand: true, cwd: './lib/js', src: [ '*' ], dest:  'lib/aqehelper.xpi/data/js/' },
 
 		    { expand: true, cwd: './ext', src: [ '*.js' ], dest:  'lib/aqehelper.crx/js/' },
+		    { expand: true, cwd: './ext', src: [ '*.js' ], dest:  'lib/aqehelper.safariextension/js/' },
 		    { expand: true, cwd: './ext', src: [ '*.js' ], dest:  'lib/aqehelper.xpi/data/js/' },
 
 		    { expand: true, cwd: './lib/css', src: [ '*' ], dest: 'lib/aqehelper.crx/css/'  },
+		    { expand: true, cwd: './lib/css', src: [ '*' ], dest: 'lib/aqehelper.safariextension/css/'  },
 		    { expand: true, cwd: './lib/css', src: [ '*' ], dest: 'lib/aqehelper.xpi/data/css/' },
 
 		    { expand: true, cwd: './ext', src: [ '*.css' ], dest:  'lib/aqehelper.crx/css/' },
+		    { expand: true, cwd: './ext', src: [ '*.css' ], dest:  'lib/aqehelper.safariextension/css/' },
 		    { expand: true, cwd: './ext', src: [ '*.css' ], dest:  'lib/aqehelper.xpi/data/css/' },
 
 		    { expand: true, cwd: './lib/img', src: [ '*' ], dest: 'lib/aqehelper.crx/images/' },
+		    { expand: true, cwd: './lib/img', src: [ '*' ], dest: 'lib/aqehelper.safariextension/img/' },
 		    { expand: true, cwd: './lib/img', src: [ '*' ], dest: 'lib/aqehelper.xpi/data/img/' }
 		]
 	    }
 	},
 	clean: [ 'lib/aqehelper.crx/js', 'lib/aqehelper.crx/css', 'lib/aqehelper.crx/images',
-		 'lib/aqehelper.xpi/data/js', 'lib/aqehelper.xpi/data/css', 'lib/aqehelper.xpi/data/img' ]
+		 'lib/aqehelper.safariextension/js', 'lib/aqehelper.safariextension/css', 'lib/aqehelper.safariextension/img',
+		 'lib/aqehelper.xpi/data/js', 'lib/aqehelper.xpi/data/css', 'lib/aqehelper.xpi/data/img' ],
+	shell: {
+	    firefox: {
+		command: 'cfx run'
+	    }
+	}
     } );
 
     var js_files = [ 'lib/js/aqehelper.js', 'lib/js/options.js' ];
@@ -81,8 +94,5 @@ module.exports = function( grunt ) {
     } );
 
     grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );
-    grunt.registerTask( 'clean', function() {
-	
-    } );
     grunt.registerTask( 'dist', [ 'compress' ] );
 };

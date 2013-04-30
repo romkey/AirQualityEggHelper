@@ -13,7 +13,7 @@ module.exports = function( grunt ) {
 
     grunt.initConfig( {
 	jshint: {
-	    all: [ 'Gruntfile.js', 'lib/js/*.js', 'test/*.js' ],
+	    all: [ 'gruntfile.js', 'lib/js/*.js', 'test/*.js', 'package.json' ],
 	    options: {
 		jquery: true,
 		smarttabs: true
@@ -62,35 +62,20 @@ module.exports = function( grunt ) {
 	},
 	clean: [ 'lib/aqehelper.crx/js', 'lib/aqehelper.crx/css', 'lib/aqehelper.crx/images',
 		 'lib/aqehelper.safariextension/js', 'lib/aqehelper.safariextension/css', 'lib/aqehelper.safariextension/img',
-		 'lib/aqehelper.xpi/data/js', 'lib/aqehelper.xpi/data/css', 'lib/aqehelper.xpi/data/img' ],
+		 'lib/aqehelper.xpi/data/js', 'lib/aqehelper.xpi/data/css', 'lib/aqehelper.xpi/data/img',
+		 'dist' ],
 	shell: {
 	    firefox: {
-		command: 'cfx run'
+		command: 'cfx run',
+		options: {
+		    stdout: true,
+		    stderr: true,
+		    execOptions: {
+			cwd: 'lib/aqehelper.xpi'
+		    }
+		}
 	    }
 	}
-    } );
-
-    var js_files = [ 'lib/js/aqehelper.js', 'lib/js/options.js' ];
-    var js_dirs = [ 'lib/aqehelper.xpi/data/js' ];
-    var css_files = [ 'lib/css/options.css' ];
-    var css_dirs = [ 'lib/aqehelper.xpi/data/css' ];
-
-    grunt.registerTask( 'build', function() {
-	var d;
-	var f;
-
-	for( d in js_dirs ) {
-	    for( f in js_files ) {
-		grunt.file.copy( js_files[ f ], js_dirs[ d ] );
-	    }
-	}
-
-	for( d in css_dirs ) {
-	    for( f in css_files ) {
-		grunt.file.copy( css_files[ f ], css_dirs[ d ] );
-	    }
-	}
-
     } );
 
     grunt.registerTask( 'test', [ 'jshint', 'qunit' ] );

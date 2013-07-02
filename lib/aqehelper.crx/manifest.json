@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "Air Quality Egg Helper",
-  "description": "Adds useful info to Air Quality Egg page on Cosm",
-  "version": "2.0.1",
+  "description": "Adds useful info to Air Quality Egg page on Xively",
+  "version": "3.0.0",
 
   "minimum_chrome_version" : "20.0.0.0",
 
@@ -13,7 +13,7 @@
 	     },
 
   "permissions": [
-      "https://api.cosm.com/",
+      "https://api.xively.com/",
       "notifications",
       "storage"
       ],
@@ -26,7 +26,7 @@
   "options_page": "options.html",
 
   "web_accessible_resources": [
-    "js/jquery-1.9.1.min.js",
+    "js/jquery-2.0.2.min.js",
     "js/jquery-timeago.js",
     "js/options.js",
     "js/aqehelper.js",

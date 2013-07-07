@@ -10,7 +10,7 @@ function markup_tests() {
 
 	var text = $( '.dashboard-updated' ).text();
 
-	equal( text.substring( text.length - 8 ), 'raw feed' );
+	equal( text.substring( text.length - 18 ), 'raw feed ' + String.fromCharCode( 8226 ) + ' Options' );
     } );
 
     test( "favicon", function() {

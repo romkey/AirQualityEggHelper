@@ -16,6 +16,6 @@ chrome.extension = {};
 chrome.extension.getURL = function( url ) { return url; };
 
 /* override window.location.pathname
- */
 window.location = {};
+ */
 

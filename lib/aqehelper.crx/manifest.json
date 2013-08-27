@@ -3,7 +3,7 @@
 
   "name": "Air Quality Egg Helper",
   "description": "Adds useful info to Air Quality Egg page on Xively",
-  "version": "3.1.0",
+  "version": "3.1.1",
 
   "minimum_chrome_version" : "20.0.0.0",
 

@@ -3,7 +3,7 @@
 
   "name": "Air Quality Egg Helper",
   "description": "Adds useful info to Air Quality Egg page on Xively",
-  "version": "3.0.0",
+  "version": "3.1.0",
 
   "minimum_chrome_version" : "20.0.0.0",
 
@@ -37,7 +37,7 @@
   ],
   "content_scripts" : [ {
     "matches": [ "http://airqualityegg.com/egg/*", "https://airqualityegg.com/egg/*" ],
-    "js" : [ "js/jquery-1.9.1.min.js", "js/jquery-timeago.js", "js/options.js", "js/aqehelper.js" ],
+    "js" : [ "js/jquery-2.0.2.min.js", "js/jquery-timeago.js", "js/options.js", "js/aqehelper.js" ],
     "css" : [ "css/aqehelper.css" ],
     "run_at": "document_end"
     } ]

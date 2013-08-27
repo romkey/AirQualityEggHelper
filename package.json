@@ -1,18 +1,49 @@
 {
-    "name": "Air Quality Egg Helper browser extension",
-    "version": "2.0.1",
-    "devDependencies": {
-	"grunt-cli": "~0.1.7",
-	"grunt": "",
-	"grunt-git-authors": "",
-	"grunt-contrib-jshint": "~0.4.3",
-	"grunt-contrib-compress": "",
-	"grunt-contrib-csslint": "",
-	"grunt-contrib-watch": "~0.3.1",
-	"grunt-contrib-uglify": "~0.2.0",
-	"grunt-contrib-qunit": "~0.2.1",
-	"grunt-shell": "~0.2.0",
-	"git-contrib-clean": "~0.4.1"
-    },
-    "license": "MIT"
+  "name": "AirQualityEggHelper",
+  "version": "3.1.0",
+  "description": "Chrome Extension to improve Air Quality Egg web pages",
+  "main": "gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.4.1",
+    "grunt-contrib-compress": "~0.5.0",
+    "grunt-contrib-csslint": "~0.1.2",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-qunit": "~0.2.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "~0.3.1",
+    "grunt-git-authors": "~1.2.0",
+    "grunt-shell": "~0.2.2",
+    "grunt-copy-to": "~0.0.3",
+    "grunt-git": "~0.0.1",
+    "grunt-git-contributors": "~0.1.4"
+  },
+  "devDependencies": {
+    "grunt-contrib-imagemin": "~0.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/romkey/AirQualityEggHelper.git"
+  },
+  "keywords": [
+    "chrome",
+    "extension",
+    "air",
+    "aqe",
+    "javascript"
+  ],
+  "author": "John Romkey",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "6d9cc409c11618cffdb007f466ec0f5e7635aa54",
+  "bugs": {
+    "url": "https://github.com/romkey/AirQualityEggHelper/issues"
+  }
 }
